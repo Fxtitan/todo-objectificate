@@ -1,8 +1,14 @@
-const readline = require('readline');
 const fs = require('fs');
+// const file = fs.readFileSync(__dirname + '/../back-end/todos.json', 'utf8');
+// const obj = JSON.parse(file);
 
 
-const todos = [];
+
+//GLOBAL CODE
+let todos = [];
+
+
+const readline = require('readline');
 const interface = readline.createInterface({input: process.stdin, output: process.stdout})
 const menu = `
 Your options are:
@@ -17,22 +23,26 @@ Your options are:
 
 const loadTodos = function() {
   todos.splice(0);
-  const file = fs.readFileSync('./todos.csv', 'utf8');
-  const rows = file.split('\n');
-  for (const rowString of rows) {
-    const todo = rowString.split(',')
-    todos.push(todo);
-  }
+  const file = fs.readFileSync(__dirname + '/../back-end/todos.json', 'utf8');
+  //Run JSON.parse on returned string
+  const obj = JSON.parse(file);
+  //create obj with todos property
+  // todos.push(obj)
+  todos = obj.todos;
+  // for (const rowString of rows) {
+  //   const todo = rowString.split(',')
+  //   todos.push(todo);
+  // }
 }
 
 const saveTodos = function() {
-  const rowStrings = [];
-  for (const todo of todos) {
-    rowStrings.push(todo[0] + ',' + todo[1]);
-  }
+  // const rowStrings = [];
+  // for (const todo of todos) {
+  //   rowStrings.push(todo[0] + ',' + todo[1]);
+  // }
 
-  const newContents = rowStrings.join('\n');
-  fs.writeFileSync('./todos.csv', newContents);
+  // const newContents = rowStrings.join('\n');
+  fs.writeFileSync(__dirname + './todos.csv', newContents);
 }
 
 const displayTodos = function(shouldPrintNumber) {

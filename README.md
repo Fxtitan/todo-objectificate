@@ -18,8 +18,8 @@ We're going to change this function so that it gets our JSON instead of our CSV,
 
 * Add `__dirname` for relative paths and the link to the correct file (json, not csv!). The first argument, the string that represents the path, should look something like this: `__dirname + '/[path to the file]'`. Make sure that the slash is in there, while the square brackets surrounding your path are, as always, just an indication that you're going to replace that whole thing with an actual value.
 * Run JSON.parse on the returned string; it shoudl return an object. Much easier than all that messy CSV splitting! Get rid of all that stuff.
-* Now reassign our global `todos` array to be the `todos` property on that object.
-* For now, console.log our global `todos` array at the end of this function just to see if it works!
+///* Now reassign our global `todos` array to be the `todos` property on that object.
+///2* For now, console.log our global `todos` array at the end of this function just to see if it works!
 
 
 ##### `saveTodos`
